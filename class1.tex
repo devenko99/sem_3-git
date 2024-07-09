@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{mt2113(PROBABILITY)}
+\author{DIPESH KACHHAP}
+\date{May 2024}
+\usepackage{amsmath}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\begin{document}
+
+\maketitle
+\section{\textbf{COMBINATORIAL ANALYSIS}}
+\subsection*{The Basic Principle of Counting}
+Suppose that two experiments are to be performed. Then if experiment 1 can result in any one of m possible outcomes and if for each outcome of experiment 1, there are n possible outcomes of experiment 2 together there are mn possible outcomes of two experiments. \\
+\subsubsection*{Proof}
+\begin{equation*}
+\setlength{\dashlinegap}{2pt}
+\left[\begin{array}{cccc:c}
+{1,1} & {1,2} & \cdots & {1,n}  \\
+{2,1} & {2,2} & \cdots & {2,n}  \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+{m,1} & {m,2} & \cdots & {m,n} 
+\end{array}
+\right]
+\end{equation*}
+for each outcome i.e. (i,j) if experiment 1 result in its $i^{th}$ position outcome and experiment 2 then result in its $j^{th}$ possible outcome. Hence the set of possible outcomes consists of m rows each containing n elements. 
+\subsection*{\textit{Generalized Basic Principle of Counting}}
+If r experiments that are to be performed are such that the first one may result in any of $n_{1}$ possible outcomes and if for each of these $n_{1}$ possible outcomes, there are $n_{2}$ possible outcomes of the second experiments and if for each of the possible outcomes of the first two experiments, there are $n_{3}$ possible outcomes of the third experiments and if \ldots then there is a total of $n_{1}.n_{2}.\ldots n_{r}$ possible outcomes of the r experiments. 
+\subsection*{Example}
+\textbf{How many different 7-place license plates are possible if the first 3 places are to be occupied by letters and the final 4 by numbers?}\\
+\textbf{Sol} Generalized version of the basic principle is 26*26*26*10*10*10*10= 175760000 outcomes
+\begin{abstract}
+    So the \textbf{Generalized Principle of Counting}\\
+    Suppose r experiments are to be performed and 
+    \begin{itemize}
+        \item For Experiments 1 we have $n_{1}$ possible outcomes
+        \item For each outcome of Experiment i $\xrightarrow{}$  there are $n_{i+1}$ outcomes for Experiment i+1
+        \item Total number of possible outcomes is 
+        \begin{equation}
+            \sum_{i=1}^{r} n_{i}= n_{1}*n_{2}*\ldots*n_{r}
+        \end{equation}
+    \end{itemize}
+    
+\end{abstract}
+\section{PERMUTATIONS}
+\subsubsection{Defination:}
+A permutation of n objects is an ordered sequence of those n objects.\\
+How many different ordered arrangements of the letters a,b, and c? \\
+Let there be an object. n(n-1)(n-2)\ldots 3.2.1= n!\\ different permutations of n objects
+\subsubsection{Counting}
+Let $P_{n}$ be the number of permutations for n objects. Then 
+\begin{equation}
+    P_{n}= n!= n*(n-1)\ldots*2= \sum_{j=1}^{n}j
+\end{equation}
+In the same there are 
+\begin{equation}
+    \frac{n!}{n_{1}!n_{2}!\ldots n_{r}!}
+\end{equation}
+different permutations of n objects of which $n_{1}$ are alike $n_{2}$ are alike \ldots $n_{r}$ are alike
+\section{Combinations}
+\subsubsection{Defination}
+A combination of p objects among n objects is a non-ordered subset of p objects. \\
+\textbf{Property}: Two combinations only differ according to the nature of their objects 
+\begin{equation}
+    \binom{n}{p}=\frac{n!}{k!(n-p)!}
+\end{equation}
+\subsubsection*{Proof of Counting}
+Combination when order is relevant\\
+The number of possibilities is 
+\begin{equation}
+    n*(n-1)\ldots*(n-p+1)= \frac{n!}{(n-p)!}
+\end{equation}
+\subsubsection{Combinations when order is irrelevant:}
+When divided by  permutations of p objects the number of possibilities is, if we select r items from n items, then the number of different groups is given by 
+\begin{equation}
+    \frac{n*(n-1)\ldots*(n-p-1)}{p!} = \frac{n!}{p!(n-p)!} = \binom{n}{p}
+    \binom{n}{r}= \binom{n}{n-r}= \frac{n!}{(n-r)!r!}
+\end{equation}
+\subsubsection{A Combinatorial Identity}
+\begin{equation}
+    \binom{n}{r}= \binom{n-1}{r-1}+\binom{n-1}{r}
+\end{equation}
+Proof:
+\begin{equation}
+    \binom{n-1}{r-1}+\binom{n-1}{r}= \frac{(n-1)!}{(r-1)!(n-r)!}+\frac{(n-1)!}{r!(n-1-r)!}= \frac{(n-1)!r}{r!(n-r!)}+\frac{(n-1)!(n-r)}{r!(n-r)!}
+\end{equation}
+\begin{equation}
+    =\frac{(n-1)!(r+n-r)}{r!(n-r)!}= \frac{(n-1)!n}{r!(n-r)!}= \frac{n!}{r!(n-r)!}= \binom{n}{r}
+\end{equation}
+\section{BINOMIAL THEOREM}
+\begin{equation}
+    (x+y)^{n} = \sum_{k=0}^{n}\binom{n}{k}x^{k}y^{n-k}
+\end{equation}  
+\subsection*{Multinomial Coeffiecent}
+It is used in combinatorics and is an extension of the binomial coefficient. It is used to find permutations when you have repeating values or duplicate items. \\
+Formula 
+\begin{equation}
+    \binom{n}{k_{1},k_{2},...,k{r-1}}= \frac{n!}{k_{1}!k_{2}!\ldots k_{r-1}!k_{r}!}
+\end{equation}
+The multinomial coefficient formula gives an expansion of $(k_{1}+kk_{2}+\ldots + k_{n})$ where $k_{i}$ are non negative integer
+\subsubsection{Division of n objects into r groups with size n1...nr}
+\begin{itemize}
+    \item n objects and r groups 
+    \item $n_{j}$ objects in group j and \[\sum_{j=1}^{r}n_{j}=n\]
+\end{itemize}
+Set of notation:
+\[\binom{n}{n_{1},\ldots,n_{r}}= \frac{n!}{\prod_{j=1}^{r}(n_{j}!)}\]
+Counting: Division of n objects into r groups with size $n-{1}, \ldots, n_{r}$ = \[\binom{n}{n_{1},\ldots,n_{r}}\]
+\section{Multinomial Theorem}
+let 
+\begin{itemize}
+    \item $x_{1},x_{2},\ldots,x_{r} \in R $
+    \item n \geq 1
+\end{itemize}
+\begin{equation}
+    (x_{1}+x_{2}+\ldots + x_{r})^n = \sum_{n_{1},\ldots,n_{r}\in
+    A_{n,r}}*\binom{n}{n_{1},n_{2},\ldots n_{r}}x_{1}^{n_1}x_{2}^{n_2}\ldots x_{r}^{n_r}  
+\end{equation}
+The numbers \[ \binom{n}{n_1, n_2,\ldots, n_r}\] are known as \textbf{multinomial coefficent}
+\section*{Permutation and Combinations}
+\begin{itemize}
+    \item No. 1 point is fuck off
+\end{itemize}
+\end{document}
